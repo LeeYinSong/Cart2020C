@@ -37,7 +37,9 @@
             @endif
 
             <div>
-                <a href="{{url('/home')}}"><img src="{{ asset('images/Logo.png')}}" alt=""></a>
+                contact : 0123456789
+                address : qwerasdfzxcv
+                email : abc@abc.com
             </div>
         </div>
     </body>
