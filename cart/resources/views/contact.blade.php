@@ -37,9 +37,9 @@
             @endif
 
             <div>
-                contact : 0123456789
-                address : qwerasdfzxcv
-                email : abc@abc.com
+                Address : Southern Cart<br>
+                Phone : 012-3456789<br>
+                Email : abc@abc.com
             </div>
         </div>
     </body>

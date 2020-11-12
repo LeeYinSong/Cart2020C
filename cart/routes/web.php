@@ -17,17 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contactus', function () {
-    return view('welcome');
+Route::get('/insertCategory', function () {
+    return view('insertCategory');
 });
 
-Auth::routes();
+Route::get('/contactus', function () {
+    return view('contact');
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/insertCategory/store', [App\Http\Controllers\CategoryController::class,'store'])->name('addCategory');
 
 Auth::routes();
 
