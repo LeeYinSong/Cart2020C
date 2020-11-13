@@ -27,7 +27,7 @@ Route::get('/contactus', function () {
 
 Route::post('/insertCategory/store', [App\Http\Controllers\CategoryController::class,'store'])->name('addCategory');
 
-Route::get('/showCategory/',, [App\Http\Controllers\CategoryController::class, 'show'])->name('showCategory');
+Route::get('/showCategory/', [App\Http\Controllers\CategoryController::class, 'show'])->name('showCategory');
 
 Auth::routes();
 
