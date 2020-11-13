@@ -111,6 +111,7 @@
                     <tr>
                         <td>{{$category->id}}</td>
                         <td>{{$category->name}}</td>
+                        <td><button>Delete</button></td>
                     </tr>
                     @endforeach
                 </table>
