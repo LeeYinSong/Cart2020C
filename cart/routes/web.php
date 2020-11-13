@@ -29,6 +29,8 @@ Route::post('/insertCategory/store', [App\Http\Controllers\CategoryController::c
 
 Route::get('/showCategory', [App\Http\Controllers\CategoryController::class, 'show'])->name('showCategory');
 
+Route::get('/deleteCategory/{id}', [App\Http\Controllers\CategoryController::class, 'delete'])->name('deleteCategory');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
