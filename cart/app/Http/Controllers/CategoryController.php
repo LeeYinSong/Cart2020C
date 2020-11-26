@@ -21,7 +21,7 @@ class CategoryController extends Controller
 
     public function show(){
         $categories=Category::all();    //instead SQL select * from categories
-        return view('showCategory')->with(category,$categories);
+        return view('showCategory')->with('categories',$categories);
     }
 
     public function delete($id){
