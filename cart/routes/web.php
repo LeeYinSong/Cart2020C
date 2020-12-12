@@ -21,15 +21,20 @@ Route::get('/insertCategory', function () {
     return view('insertCategory');
 });
 
+
+
 Route::get('/contactus', function () {
     return view('contact');
 });
 
-Route::post('/insertCategory/store', [App\Http\Controllers\CategoryController::class,'store'])->name('addCategory');
+
+
+Route::post('/insertCategory/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('addCategory');
 
 Route::get('/showCategory', [App\Http\Controllers\CategoryController::class, 'show'])->name('showCategory');
 
 Route::get('/deleteCategory/{id}', [App\Http\Controllers\CategoryController::class, 'delete'])->name('deleteCategory');
+
 
 Route::post('/insertProduct/store', [App\Http\Controllers\ProductController::class, 'store'])->name('addProduct');
 
@@ -42,6 +47,21 @@ Route::get('/editproduct/{id}', [App\Http\Controllers\ProductController::class, 
 Route::get('/deleteProduct/{id}', [App\Http\Controllers\ProductController::class, 'delete'])->name('deleteProduct');
 
 Route::post('/updateproduct', [App\Http\Controllers\ProductController::class, 'update'])->name('updateproduct');
+
+Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search.product');
+
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'showProducts'])->name('products');
+
+Route::get('/product_detail/{id}', [App\Http\Controllers\ProductController::class, 'showProductDetail'])->name('product.detail');
+//productdetail.blade.php?id=11
+
+Route::post('/addToCart', [App\Http\Controllers\CartController::class, 'add'])->name('add.to.cart'); // when user click on add to cart in product detail, id and quantity add to cart
+
+Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->name('my.cart');  //user view all items added to cart
+
+Route::get('/showmyCart', [App\Http\Controllers\CartController::class, 'showMyCart'])->name('show.myCart');
+
+Route::post('/createorder', [App\Http\Controllers\OrderController::class, 'add'])->name('create.order');
 
 Auth::routes();
 
