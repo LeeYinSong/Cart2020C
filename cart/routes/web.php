@@ -61,6 +61,8 @@ Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->nam
 
 Route::get('/showmyCart', [App\Http\Controllers\CartController::class, 'showMyCart'])->name('show.myCart');
 
+Route::get('/deletemyCart/{id}', [App\Http\Controllers\CartController::class, 'deleteMyCart'])->name('delete.myCart');
+
 Route::post('/createorder', [App\Http\Controllers\OrderController::class, 'add'])->name('create.order');
 
 Auth::routes();

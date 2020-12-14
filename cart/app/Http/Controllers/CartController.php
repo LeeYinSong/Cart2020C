@@ -24,11 +24,11 @@ class CartController extends Controller
 
         $r=request(); 
         $addCategory=myCart::create([    
-            
+
             'quantity'=>$r->quantity,             
             'orderID'=>'',
             'productID'=>$r->id,                 
-            'userID'=>Auth::id(), 
+            'userID'=>Auth::id(),   
                         
         ]);
         Session::flash('success',"Product add succesful!");        
@@ -44,5 +44,11 @@ class CartController extends Controller
         ->paginate(12);
         
         return view('myCart')->with('carts',$carts);
+    }
+
+    public function deleteMyCart($id){
+        $carts=myCart::find($id);
+        $carts->delete();
+        return redirect()->route('show.myCart');
     }
 }
