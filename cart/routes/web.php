@@ -61,9 +61,15 @@ Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->nam
 
 Route::get('/showmyCart', [App\Http\Controllers\CartController::class, 'showMyCart'])->name('show.myCart');
 
-Route::get('/deletemyCart/{id}', [App\Http\Controllers\CartController::class, 'deleteMyCart'])->name('delete.myCart');
-
 Route::post('/createorder', [App\Http\Controllers\OrderController::class, 'add'])->name('create.order');
+
+Route::get('/myorder', [App\Http\Controllers\OrderController::class, 'show'])->name('my.order');
+
+// route for processing payment
+Route::post('/paypal', [App\Http\Controllers\PaymentController::class, 'payWithpaypal'])->name('paypal');
+
+// route for check status of the payment
+Route::get('/status', [App\Http\Controllers\PaymentController::class, 'getPaymentStatus'])->name('status');
 
 Auth::routes();
 

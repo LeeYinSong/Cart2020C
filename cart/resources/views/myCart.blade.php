@@ -25,7 +25,7 @@
 		        <tbody>	
                 @foreach($carts as $cart)
 		            <tr>
-		                <td><input type="checkbox" name="item[]" value="{{$cart->id}}"/></td>
+		                <td><input type="checkbox" name="item[]" value="{{$cart->cid}}" /></td>
                         <td><img src="{{ asset('images/') }}/{{$cart->image}}" alt="" width="50"></td>
 		                <td style="max-width:300px">
 		                    <h6>{{$cart->name}}</h6>	                    
@@ -34,7 +34,7 @@
                         <td>{{$cart->price*$cart->cartQty}}</td>
 		                <td>
 		                    | 
-		                    <a href="{{ route('delete.myCart', ['id' => $cart->id]) }}" 
+		                    <a href="#" 
  class="btn btn-danger" onclick="return confirm('Sure Want Delete?')">Delete</a>
 		                </td>
 		            </tr> 
