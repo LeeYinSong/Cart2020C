@@ -45,4 +45,11 @@ class CartController extends Controller
         
         return view('myCart')->with('carts',$carts);
     }
+
+    public function delete($id){
+       
+        $carts =myCart::find($id);
+        $carts->delete();
+        Return redirect()->route('my.cart');
+    }
 }

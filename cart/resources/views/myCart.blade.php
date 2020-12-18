@@ -6,6 +6,20 @@
         </div>       
 @endif 
     
+<script>
+function Calculate() {
+	var prices = document.getElementsByName('price[]');
+	var total=0;
+	var cboxes = document.getElementsByName('item[]');    
+	var len = cboxes.length;	    
+	for (var i=0; i<len; i++) {        
+		if(cboxes[i].checked){	//calculate if checked		
+			subtotal=parseFloat(prices[i].value)+parseFloat(total);	}					
+	}
+	total=subtotal+total;
+	document.getElementById('amount').value=total.toFixed(2);
+}
+</script>
 
 <div class="container">
 	    <div class="row">
@@ -25,16 +39,20 @@
 		        <tbody>	
                 @foreach($carts as $cart)
 		            <tr>
-		                <td><input type="checkbox" name="item[]" value="{{$cart->cid}}" /></td>
+		                <td><input type="checkbox" name="item[]" value="{{$cart->cid}}" onchange="Calculate()"/></td>
                         <td><img src="{{ asset('images/') }}/{{$cart->image}}" alt="" width="50"></td>
 		                <td style="max-width:300px">
 		                    <h6>{{$cart->name}}</h6>	                    
 		                </td>
                         <td>{{$cart->cartQty}}</td>
-                        <td>{{$cart->price*$cart->cartQty}}</td>
+                        @php
+							$subtotal = $cart->cartQty*$cart->price;
+						@endphp
+                        <td>{{$subtotal}}</td>
+						<input type="hidden" value="{{$subtotal}}" name="price[]" id="price[]"/>
 		                <td>
 		                    | 
-		                    <a href="#" 
+		                    <a href="{{ route('delete.cart', ['id' => $cart->cid]) }}" 
  class="btn btn-danger" onclick="return confirm('Sure Want Delete?')">Delete</a>
 		                </td>
 		            </tr> 
@@ -45,7 +63,7 @@
                     <td>&nbsp;</td>
 		            <td>&nbsp;</td>                   
 		            <td>Total</td>
-		            <td><input type="text" name="amount" id="amount" value="1000"></td>
+		            <td><input type="text" name="amount" id="amount" value=""></td>
                     <td><input type="submit" name="checkout" value="Checkout"></td>
 		        </tr>
 				</form>
