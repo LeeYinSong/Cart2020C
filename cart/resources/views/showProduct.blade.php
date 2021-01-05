@@ -1,4 +1,3 @@
-
 @extends('layouts.app')
 @section('content') 
 @if(Session::has('success'))           
@@ -6,7 +5,19 @@
             {{ Session::get('success')}}
         </div>       
 @endif 
-    
+@guest
+	 @if (Route::has('login'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+        </li>
+    @endif
+                            
+    @if (Route::has('register'))
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+        </li>
+     @endif
+@else    
 
 <div class="container">
 	    <div class="row">
@@ -47,12 +58,14 @@
 				
 		        </tbody>
 		    </table>
-		
 		<div class="text-center">
-		{{ $products->links() }}
+			<a href="{{ route('pdfReport') }}" class="btn btn-info">Download Product List</a>
+        </div>
+		<div class="text-center">
+			{{ $products->links() }}
         </div>
 
 	</div>
     </div>
-
+@endguest
 @endsection
