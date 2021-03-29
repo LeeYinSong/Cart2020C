@@ -19,8 +19,8 @@ class OrderController extends Controller
             
             'amount'=>$r->amount,             
             'paymentStatus'=>'pending',                 
-            'userID'=>Auth::id(),                          
-        ]); 
+            'userID'=>Auth::id(),
+        ]);
         
         $orderID=DB::table('my_orders')->where('userID','=',Auth::id())->orderBy('created_at', 'desc')->first(); //get the lastest order ID        
         
